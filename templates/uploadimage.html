@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}
+<title>UPLOAD INPUT IMAGE</title>
+{% endblock %}
+
+{% block cardheader %}
+<div class="row">
+    <div class="col-3">
+        <h3>Upload file</h3>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <form class="form-control mb-2" method=post enctype=multipart/form-data> 
+            <input placeholder="Insert your fingerprint photo" class="form-control" type="file" onchange="getfilename(this)" name="file">
+            <div class="container text-center p-2">
+                <input class='btn btn-primary' style="background-color: #FF0000; color: white" type="submit" value="Upload">
+            </div>
+        </form>
+        <div class="container border rounded text-center mb-2" style="min-height:15px" id="resultTerm">
+            <div class="row">
+                <div class="col-6 p-2">
+                    Input Image
+                    <img src="{{path}}" alt="">
+                </div>
+                <div class="col-6">
+                    Most Relevant Image
+                    <img src="{{path_most_relevant}}" alt="">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Path</th>
+                            <th scope="col">Cosine Similarity</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">{{id_most_relevant}}</th>
+                            <td>{{path_most_relevant}}</td>
+                            <td>{{similarity}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+        <div class="container border rounded text-center mb-2" style="min-height:15px" id="resultTerm">
+            <h3>Result</h3>
+            {{result}}
+        </div>
+        <!-- <div class="container border rounded text-center mb-2" style="min-height:15px" id="resultTerm">
+            <h3>File path</h3>
+            {{path}}
+        </div>
+        <div class="container border rounded text-center mb-2" style="min-height:15px" id="resultTerm">
+            <h3>Termination minutae</h3>
+            {{resultTerm}}
+        </div>
+        <div class="container border rounded text-center mb-2" style="min-height:15px" id="resultBif">
+            <h3>Bifurcation minutae</h3>
+            {{resultBif}}
+        </div> -->
+    </div>
+
+</div>
+
+<script>
+    // window.onload = function () {
+    //     const params = window.location.search
+    //     const result = params.split('uploadimage?result=')[1]
+    //     $('#result').text("Kết quả tìm kiếm:" + result)
+    //     // if (result != "") {
+    //     //     $('#result').text("Kết quả tìm kiếm:" + result)
+    //     // } else {
+    //     //     $('#result').text("")
+    //     // }
+    //     console.log(params)
+    // }
+    function getfilename(input){
+        $('#resultBif').text("");
+        $('#resultTerm').text("");
+    }
+</script>
+
+{% endblock %}

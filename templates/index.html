@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>INDEX</title>
+{% endblock %}
+
+{% block cardheader%}
+<div class="row">
+    <div class="col-7">
+        <h3>List of image in database</h3>
+    </div>
+    <div class="col-3">
+    </div>
+    <div class="col-2 text-end">
+        <a class="btn" style="background-color: white; color: #000000;" href="{{url_for('upload_image_page')}}">Search</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Path</th>
+            <th scope="col">Label</th>
+            <th scope="col">Bifucation Vector</th>
+            <th scope="col">Termination Vector</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <th scope="row">{{item[0]}}</th>
+            <td>{{item[1]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[3]}}</td>
+            <td>{{item[4]}}</td>
+            <td>{{item[5]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

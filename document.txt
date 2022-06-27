@@ -1,0 +1,11 @@
+1. pip install flask
+2. Minimal template:
+    from flask import Flask
+    app = Flask(__name__)
+
+    @app.route("/")
+    def hello_world():
+        return "<p>Hello, World!</p>"
+3. set FLASK_APP=<application name>
+3.1 Debug mode: set FLASK_DEBUG=1
+4. flask run
